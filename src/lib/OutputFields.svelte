@@ -2,11 +2,10 @@
   import Card, { Content } from '@smui/card';
   import { input, inputUnit, outputUnit, viewportWidth } from './units.ts';
 
-  function convertInputUnitToPx(): number {
-    let convertedInput: number = 0;
+  function convertInputUnitToPx(input: number, inputUnit: string, viewportWidth: number): number {
     switch (inputUnit) {
       case "vw":
-        convertedInput = ($input * $viewportWidth) / 100;
+        return (input * viewportWidth) / 100;
         break;
       case "%":
         console.log("%");
@@ -15,14 +14,17 @@
         console.log("vh");
         break;
       default:
-        convertedInput = input;
+        return input;
         break;
     }
-    return convertedInput;
   }
   
-  $: inputConverted = $inputUnit !== "px" ? convertInputUnitToPx() : $input;
-  $: output = ($input > 0 && $viewportWidth > 0) ? ((inputConverted / $viewportWidth) * 100).toFixed((2)) : 0;
+  let output: number = 0;
+
+  $: {
+    const inputConverted = inputUnit !== "px" ? convertInputUnitToPx($input, $inputUnit, $viewportWidth) : $input;
+    output = ($input > 0 && $viewportWidth > 0) ? ((inputConverted / $viewportWidth) * 100).toFixed(2) : 0;
+  }
 </script>
 
 <div class="output">
