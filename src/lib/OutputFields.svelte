@@ -2,20 +2,23 @@
   import Card, { Content } from '@smui/card';
   import { input, inputUnit, outputUnit, viewportWidth } from './units.ts';
 
-  function convertInputUnitToPx(input: number, inputUnit: string, viewportWidth: number): number {
-    switch (inputUnit) {
-      case "vw":
-        return (input * viewportWidth) / 100;
-        break;
-      case "%":
-        console.log("%");
-        break;
-      case "vh":
-        console.log("vh");
-        break;
-      default:
-        return input;
-        break;
+  function convertInputUnitToPx(input: number, inputUnit: string, base: number): number {
+    if (inputUnit === "vw" || inputUnit === "vh" || inputUnit === "%") {
+      return (input * base) / 100;
+    } else if (inputUnit === "rem" || inputUnit === "em") {
+      return input * base;
+    } else {
+      return input;
+    }
+  }
+
+  function convertInput(input: number, base: number, outputUnit: string): number {
+    if (outputUnit === "vw" || outputUnit === "vh" || outputUnit === "%") {
+      return (input / base) * 100;
+    } else if (outputUnit === "rem" || outputUnit === "em") {
+      return input / base;
+    } else {
+      return input;
     }
   }
   
@@ -23,7 +26,7 @@
 
   $: {
     const inputConverted = inputUnit !== "px" ? convertInputUnitToPx($input, $inputUnit, $viewportWidth) : $input;
-    output = ($input > 0 && $viewportWidth > 0) ? ((inputConverted / $viewportWidth) * 100).toFixed(2) : 0;
+    output = ($input > 0 && $viewportWidth > 0) ? (convertInput(inputConverted, $viewportWidth, $outputUnit)).toFixed(2) : 0;
   }
 </script>
 
@@ -31,7 +34,7 @@
   <Card style="height: 100%;">
     <div style="padding: 1rem;">
       <h2 class="mdc-typography--headline6" style="margin: 0;">
-        Viewport Width output
+        Output
       </h2>
     </div>
     <Content class="mdc-typography--body2">

@@ -9,7 +9,7 @@
       case "px":
         label = "Viewport Width";
         suffix = "px";
-        $viewportWidth = document.body.clientWidth || 720;
+        $viewportWidth = document.body.clientWidth || 1080;
         break;
       case "vw":
         label = "Viewport Width (vw)";
@@ -17,14 +17,24 @@
         $viewportWidth = 100;
         break;
       case "%":
-        label = "Percentage";
+        label = "Base";
         suffix = "%";
         $viewportWidth = 100;
         break;
       case "vh":
         label = "Viewport Height";
         suffix = "vh";
-        $viewportWidth = 100;
+        $viewportWidth = document.body.clientHeight || 720;
+        break;
+      case "rm":
+        label = "Base";
+        suffix = "px";
+        $viewportWidth = 16;
+        break;
+      case "rem":
+        label = "Base";
+        suffix = "px";
+        $viewportWidth = 16;
         break;
       default:
         label = "Unknown Label";

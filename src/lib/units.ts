@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 export const inputUnit = writable<string>("px");
 export const outputUnit = writable<string>("vw");
-export const options: string[] = ["px", "vw", "%", "vh"];
+export const options: string[] = ["px", "vw", "%", "vh", "rem", "em"];
 
 export const input = writable<number>(0);
 

@@ -2,9 +2,11 @@
   import SelectMenus from "./lib/SelectMenus.svelte";
   import InputFields from "./lib/InputFields.svelte";
   import OutputFields from "./lib/OutputFields.svelte";
+  import AboutAuthor from "./lib/AboutAuthor.svelte";
 </script>
 
 <main>
+  <AboutAuthor />
   <div class="content">
     <SelectMenus />
     <div class="fields">
