@@ -30,4 +30,14 @@
     gap: 1vw;
     width: 100%;
   }
+  @media only screen and (max-width: 720px) {
+    .content {
+      width: 90%;
+    }
+    .fields {
+      flex-direction: column;
+      gap: 2vh;
+      margin-top: 2vh;
+    }
+  }
 </style>

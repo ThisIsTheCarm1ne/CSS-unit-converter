@@ -31,4 +31,10 @@
     gap: 1vw;
     margin-bottom: 1vw;
   }
+  @media only screen and (max-width: 720px) {
+    .select_menus {
+      flex-direction: column;
+      gap: 1vh;
+    }
+  }
 </style>
