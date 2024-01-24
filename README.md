@@ -1,21 +1,14 @@
 # CSS Units Converter
 
-*Work in progress*
+Live demo link is on my [website](https://thisisthecarm1ne.github.io/)
 
-| Convert from |  Convert to |
-| --- | --- |
-| px |  vw |
-| vw |  px |
+Convert from & to 
 
-## Planning to add conversions:
-
-- [ ]  vh
-- [ ]  %
-- [ ]  em
-- [ ]  cm
-- [ ]  rem
-- [ ]  pt
-- [ ]  pc
-- [ ]  mm
+- px
+- vw
+- vh
+- %
+- rem
+- em
 
 Uses [Svelte]() and [Svelte Material UI](https://sveltematerialui.com/)
